@@ -1,12 +1,15 @@
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Main {
 	
 	public static void main(String[] args) {
+		DecimalFormat df = new DecimalFormat("#.##");
+		Scanner S = new Scanner(System.in);
+		
 		Editor editor = new Editor();
 		
-		Scanner S = new Scanner(System.in);
 		int opcion = 0, ronda = 0; //Para la edición del gladiador
 		double ataque, escudo; //Para la lucha
 		boolean terminar = true;
@@ -65,7 +68,7 @@ public class Main {
 			
 			System.out.println("================================================");
 			System.out.println(">> Ronda "+ronda+" | Turno de "+editor.g2.GetNombre());
-			System.out.println("Vida de "+editor.g1.GetNombre()+": "+editor.g1.GetSalud());
+			System.out.println("Vida de "+editor.g1.GetNombre()+": "+df.format(editor.g1.GetSalud()));
 			if(ronda < 10) { //Escudos en rondas bajas
 				escudo = editor.g1.defensa();
 				
@@ -83,7 +86,7 @@ public class Main {
 			
 			if(terminar) { //Si no ha terminado el combate... que continúe!
 				System.out.println("\n>> Ronda "+ronda+" | Turno de "+editor.g1.GetNombre());
-				System.out.println("Vida de "+editor.g2.GetNombre()+": "+editor.g2.GetSalud());
+				System.out.println("Vida de "+editor.g2.GetNombre()+": "+df.format(editor.g2.GetSalud()));
 				if(ronda < 10) { //Escudos en rondas bajas
 					escudo = editor.g2.defensa();
 					
@@ -101,12 +104,12 @@ public class Main {
 			
 			System.out.println("_________________________________________________");
 			if(editor.g1.GetSalud() > 0) {
-				System.out.println("Vida de "+editor.g1.GetNombre()+": "+editor.g1.GetSalud());
+				System.out.println("Vida de "+editor.g1.GetNombre()+": "+df.format(editor.g1.GetSalud()));
 			}else {
 				System.out.println("Vida de "+editor.g1.GetNombre()+": 0");
 			}
-			if(editor.g1.GetSalud() > 0) {
-				System.out.println("Vida de "+editor.g2.GetNombre()+": "+editor.g2.GetSalud());
+			if(editor.g2.GetSalud() > 0) {
+				System.out.println("Vida de "+editor.g2.GetNombre()+": "+df.format(editor.g2.GetSalud()));
 			}else {
 				System.out.println("Vida de "+editor.g2.GetNombre()+": 0");
 			}
@@ -118,9 +121,9 @@ public class Main {
 		System.out.println("Nº Rondas:	"+ronda);
 		System.out.println("Ganador:	"+ganador);
 		if(ganador == editor.g1.GetNombre()) {
-			System.out.println("Vida restante:	"+editor.g1.GetSalud());
+			System.out.println("Vida restante:	"+df.format(editor.g1.GetSalud()));
 		}else if(ganador == editor.g2.GetNombre()) {
-			System.out.println("Vida restante:	"+editor.g2.GetSalud());
+			System.out.println("Vida restante:	"+df.format(editor.g2.GetSalud()));
 		}else {
 			System.out.println("Vida restante:	No encontrado");
 		}

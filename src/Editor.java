@@ -1,6 +1,8 @@
+
 import java.util.Scanner;
 
 public class Editor {
+
 	Scanner S = new Scanner(System.in);
 	Gladiador g1 = new Gladiador("AaronPB", 100, 30); //Gladiador a vencer
 	Gladiador g2 = new Gladiador("Default", 50, 10); //Gladiador 2 default
